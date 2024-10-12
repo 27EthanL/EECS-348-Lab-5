@@ -2,10 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-const int M = 12;
-const int N = 11;
-
-void monthly(double sales[12], char months[M][N]){
+void monthly(double sales[12], char months[12][11]){
     FILE* fptr;
     char sale[2][6] = {"Month", "Sale"};
     char content[] = "Monthly Sales Report for 2024";
@@ -22,13 +19,13 @@ void monthly(double sales[12], char months[M][N]){
     fclose(fptr);
 }
 
-void summary(double sales[12], char months[M][N]){
+void summary(double sales[12], char months[12][11]){
     FILE* fptr;
     double min = sales[0];
     int min_index = 0;
     double max = sales[0];
     int max_index = 0;
-    double average;
+    double average = 0;
     char content[] = "\nSales summary report:";
     char sale[3][15] = {"Minimum sales:", "Maximum sales:", "Average sales:"};
 
@@ -56,7 +53,7 @@ void summary(double sales[12], char months[M][N]){
     fclose(fptr);
 }
 
-void moving(double sales[12], char months[M][N]){
+void moving(double sales[12], char months[12][11]){
     FILE* fptr;
     double jan_to_june, feb_to_july, mar_to_aug, apr_to_sep, may_to_oct, june_to_nov, july_to_dec;
     double averages[7];
@@ -93,7 +90,7 @@ void moving(double sales[12], char months[M][N]){
     fclose(fptr);
 }
 
-void sorted(double sales[12], char months[M][N]){
+void sorted(double sales[12], char months[12][11]){
     FILE* fptr;
     int i = 0;
     int index[12] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
@@ -132,8 +129,8 @@ int main(){
     double sale;
     int i = 0;
     char currentline[100];
-    char months[M][N] = {"January", "February", "March", "April", "May", "June", 
-    "July", "August", "September", "October", "November", "December"};
+    char months[12][11] = {"January", "February", "March", "April", "May", 
+    "June", "July", "August", "September", "October", "November", "December"};
 
     ptr = fopen("sales.txt", "r");
 
